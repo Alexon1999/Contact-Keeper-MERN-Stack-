@@ -6,6 +6,10 @@ const app = express();
 // + Connect Database
 connectDB();
 
+// + Init Midddleware
+app.use(express.json()); // parse json
+app.use(express.urlencoded({ extended: false }));
+
 app.get('/', (req, res) => {
   res.json({ msg: ' Welcome to my first project with Mern stack' });
 });

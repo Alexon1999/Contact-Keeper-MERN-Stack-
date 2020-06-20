@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+const config = require('config'); // + allow us to create global variable
+const db = config.get('mongoURI'); //+ get mongoURI from config
 
 // * Async await
 const connectDB = async () => {
