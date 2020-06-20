@@ -1,0 +1,7 @@
+Dependencies
+npm i express bcryptjs jsonwebtoken config express-validator mongoose
+
+Dev-dependencies
+npm i -D nodemon concurrently
+
+github : https://github.com/bradtraversy/contact-keeper
