@@ -6,12 +6,20 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 // * @route | Get | api/auth
 // * @desc  | Get logged in user
 // * @access | Private
-router.get('/', (req, res) => {
-  res.send('Get logged in user');
+router.get('/', auth, async (req, res) => {
+  try {
+    // find by id : give an object , if its found
+    const user = await User.findById(req.user.id).select('-password'); //find user with no password
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // authentification / log in and we send data
@@ -29,7 +37,7 @@ router.post(
     const errors = validationResult(req); // give an array
 
     if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
 
     const { email, password } = req.body;

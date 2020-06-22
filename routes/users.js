@@ -37,6 +37,7 @@ router.post(
     try {
       let user = await User.findOne({ email }); // email : email
 
+      // findOne : give an object (the finded document)
       // + check if user already in database
       if (user) {
         return res.status(400).json({ msg: 'User already exists' });
@@ -73,6 +74,7 @@ router.post(
         },
       };
 
+      // 3600 : 1hour ,
       jwt.sign(
         payload,
         config.get('jwtSecret'),
