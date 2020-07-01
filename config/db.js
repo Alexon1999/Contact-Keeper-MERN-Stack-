@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('config'); // + allow us to create global variable
+
 const db = config.get('mongoURI'); //+ get mongoURI from config
 
 // * Async await
@@ -9,6 +10,7 @@ const connectDB = async () => {
     await mongoose.connect(db, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
 
     console.log('MongoDB connected');

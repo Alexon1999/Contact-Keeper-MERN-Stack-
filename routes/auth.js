@@ -11,6 +11,7 @@ const auth = require('../middleware/auth');
 // * @route | Get | api/auth
 // * @desc  | Get logged in user
 // * @access | Private
+// + Keep track of current user
 router.get('/', auth, async (req, res) => {
   try {
     // find by id : give an object , if its found
@@ -18,7 +19,7 @@ router.get('/', auth, async (req, res) => {
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json({ msg: 'Server Error' });
   }
 });
 

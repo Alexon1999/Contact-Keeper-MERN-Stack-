@@ -38,12 +38,11 @@ router.post(
       let user = await User.findOne({ email }); // email : email
 
       // findOne : give an object (the finded document)
+      //+ si mongodb trouve pas le email alors le user sera null
       // + check if user already in database
       if (user) {
         return res.status(400).json({ msg: 'User already exists' });
       }
-
-      //+ si mongodb trouve pas le email alors le user sera null
 
       user = new User({
         name,
@@ -56,9 +55,10 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       console.log(user.password);
+      console.log(user.id);
       console.log(user); // give an object like this
       // {
-      //   _id: 5eee637089c0770c242455cf,
+      //   _id: 5eee637089c0770c242455cf,////string
       //   name: 'test',
       //   email: 'test@gmail.com',
       //   date: 2020-06-20T19:28:48.803Z,
