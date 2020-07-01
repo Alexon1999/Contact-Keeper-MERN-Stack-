@@ -12,9 +12,9 @@ connectDB();
 app.use(express.json()); // parse json
 app.use(express.urlencoded({ extended: false }));
 
-// app.get('/', (req, res) => {
-//   res.json({ msg: ' Welcome to my first project with Mern stack' });
-// });
+app.get('/', (req, res) => {
+  res.json({ msg: ' Welcome to my first project with Mern stack' });
+});
 
 // + Define Routes
 app.use('/api/users', require('./routes/users'));
