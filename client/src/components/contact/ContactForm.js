@@ -53,6 +53,7 @@ const ContactForm = () => {
     }
 
     clearCurrent();
+    // va faire ca , on a mis current comme dependency dans useeffect
     // setContact({
     //   name: '',
     //   email: '',

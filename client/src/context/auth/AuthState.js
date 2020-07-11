@@ -53,7 +53,7 @@ const AuthState = ({ children }) => {
     };
 
     try {
-      // "proxy": "http://localhost:5000" // dans package.json
+      //* "proxy": "http://localhost:5000" // dans package.json
       const res = await axios.post('/api/users', formData, config);
 
       dispatch({
